@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import TanstackQueryProvider from '@/components/tanstack-query-provider';
 import { Container } from '@mui/material';
+import ReduxProvider from '@/components/redux-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Container maxWidth='xl'>
-          <TanstackQueryProvider>{children}</TanstackQueryProvider>
+          <ReduxProvider>
+            <TanstackQueryProvider>{children}</TanstackQueryProvider>
+          </ReduxProvider>
         </Container>
       </body>
     </html>
