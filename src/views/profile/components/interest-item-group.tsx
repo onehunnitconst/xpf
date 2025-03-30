@@ -1,19 +1,24 @@
-import { Grid2, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import InterestItem from './interest-item';
+import { useProfileViewContext } from '../context/profile-view-context';
+import { useGetInterestItems } from '@/api/hooks/profiles';
 
 export default function InterestItemGroup() {
+  const { id } = useProfileViewContext();
+  const { interestItems, interestItemsLoading, interestItemsError } =
+    useGetInterestItems(id);
+
   return (
     <Stack spacing={2}>
       <Stack spacing={2}>
-        <Typography variant='h5' fontWeight={700}>리듬게임</Typography>
-        <Grid2 container spacing={3}>
-          <Grid2 size={{ xs: 12, md: 6 }}>
-            <InterestItem />
-          </Grid2>
-          <Grid2 size={{ xs: 12, md: 6 }}>
-            <InterestItem />
-          </Grid2>
-        </Grid2>
+        {interestItemsLoading && !interestItemsError && (
+          <Typography variant='h6'>아직 등록한 관심사가 없습니다.</Typography>
+        )}
+        {!interestItemsLoading &&
+          !interestItemsError &&
+          interestItems.map((item) => (
+            <InterestItem key={item.id.toString()} item={item} />
+          ))}
       </Stack>
     </Stack>
   );

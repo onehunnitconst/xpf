@@ -6,18 +6,28 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import { UserInterestItem } from '@/models/profiles';
+type Props = {
+  key: string;
+  item: UserInterestItem;
+};
 
-export default function InterestItem() {
+export default function InterestItem({ key, item }: Props) {
   return (
-    <Box flexGrow={1}>
+    <Box flexGrow={1} key={key}>
       <Paper variant='outlined' sx={{ width: '100%', borderRadius: 4 }}>
         <CardContent>
           <Stack spacing={2}>
             <Stack direction='row' alignItems='center' spacing={1.5}>
               <Avatar variant='rounded' sx={{ width: 64, height: 64 }} />
-              <Typography variant='h6' fontWeight={700}>
-                비트매니아 IIDX
-              </Typography>
+              <Stack>
+                <Typography variant='body2' fontWeight={500} color='text.secondary'>
+                  {item.category}
+                </Typography>
+                <Typography variant='h6' fontWeight={700}>
+                  {item.title}
+                </Typography>
+              </Stack>
             </Stack>
             <Box
               sx={{
@@ -28,11 +38,8 @@ export default function InterestItem() {
                 WebkitBoxOrient: 'vertical',
               }}
             >
-              <Typography variant='body2' color='text.secondary'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Quisquam aliquam harum magni, repudiandae ipsum nostrum tenetur
-                magnam praesentium molestiae ipsa at iure doloremque tempora
-                temporibus voluptate veritatis deleniti hic a?
+              <Typography variant='body2'>
+                {item.memo}
               </Typography>
             </Box>
           </Stack>

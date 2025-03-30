@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Container maxWidth='xl'>
+        <Container maxWidth='md'>
           <ReduxProvider>
             <TanstackQueryProvider>{children}</TanstackQueryProvider>
           </ReduxProvider>
