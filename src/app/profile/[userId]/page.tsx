@@ -1,5 +1,11 @@
 import ProfileView from '@/views/profile/profile-view';
 
-export default function ProfilePage({ params }: { params: { userId: string } }) {
+type Props = {
+  params: {
+    userId: string;
+  };
+};
+
+export default function ProfilePage({ params }: Props) {
   return <ProfileView userId={params.userId} />;
 }
