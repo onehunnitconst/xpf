@@ -19,7 +19,11 @@ export default function InterestItem({ key, item }: Props) {
         <CardContent>
           <Stack spacing={2}>
             <Stack direction='row' alignItems='center' spacing={1.5}>
-              <Avatar variant='rounded' sx={{ width: 64, height: 64 }} />
+              <Avatar
+                variant='rounded'
+                sx={{ width: 64, height: 64 }}
+                src={item.image_url}
+              />
               <Stack>
                 <Typography variant='body2' fontWeight={500} color='text.secondary'>
                   {item.category}
